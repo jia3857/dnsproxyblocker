@@ -7,10 +7,11 @@ import socket
 import struct
 import time
 import logging
+import pprint
 
 # set up logging to file - see previous section for more details
 logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
+                    format='%(asctime)s %(name)-10s %(levelname)-4s %(message)s',
                     datefmt='%m-%d %H:%M',
                     filename='dnsproxy.log',
                     filemode='w')
@@ -18,7 +19,7 @@ logging.basicConfig(level=logging.DEBUG,
 console = logging.StreamHandler()
 console.setLevel(logging.INFO)
 # set a format which is simpler for console use
-formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+formatter = logging.Formatter('%(asctime)s %(name)-10s %(levelname)-8s %(message)s')
 # tell the handler to use this format
 console.setFormatter(formatter)
 # add the handler to the root logger
@@ -63,7 +64,6 @@ class Struct(object):
         for name, value in kwargs.items():
             setattr(self, name, value)
     def __str__(self):
-        import pprint
         return pprint.pformat(vars(self))
 
 def parse_dns_message(data):

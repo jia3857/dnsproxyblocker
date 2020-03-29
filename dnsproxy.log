@@ -1,2 +1,2 @@
-03-29 15:31 dnsproxy.py  INFO     q = {'class_': 1, 'end_offset': 31, 'name': 'w.netflix.com', 'type_': 1}
-03-29 15:31 dnsproxy.py  INFO     q = {'class_': 1, 'end_offset': 28, 'name': 'w.hulu.com', 'type_': 1}
+03-29 15:59 dnsproxy.py INFO q = {'class_': 1, 'end_offset': 38, 'name': '093qpeuqpmz6ebfa.com', 'type_': 1}
+03-29 15:59 dnsproxy.py INFO q = {'class_': 1, 'end_offset': 29, 'name': 'netflix.com', 'type_': 1}
