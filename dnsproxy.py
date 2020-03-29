@@ -9,23 +9,27 @@ import time
 import logging
 import pprint
 
-# set up logging to file - see previous section for more details
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s %(name)-10s %(levelname)-4s %(message)s',
-                    datefmt='%m-%d %H:%M',
-                    filename='dnsproxy.log',
-                    filemode='w')
-# define a Handler which writes INFO messages or higher to the sys.stderr
-console = logging.StreamHandler()
-console.setLevel(logging.INFO)
-# set a format which is simpler for console use
-formatter = logging.Formatter('%(asctime)s %(name)-10s %(levelname)-8s %(message)s')
-# tell the handler to use this format
-console.setFormatter(formatter)
-# add the handler to the root logger
-logging.getLogger('').addHandler(console)
-LOG = logging.getLogger(__file__)
+def setup_log():
+    # set up logging to file - see previous section for more details
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(asctime)s %(name)-10s %(levelname)-4s %(message)s',
+                        datefmt='%m-%d %H:%M',
+                        filename='dnsproxy.log',
+                        filemode='w')
+    # define a Handler which writes INFO messages or higher to the sys.stderr
+    console = logging.StreamHandler()
+    console.setLevel(logging.INFO)
+    # set a format which is simpler for console use
+    formatter = logging.Formatter('%(asctime)s %(name)-10s %(levelname)-8s %(message)s')
+    # tell the handler to use this format
+    console.setFormatter(formatter)
+    # add the handler to the root logger
+    logging.propagate = False
+    logging.getLogger('').addHandler(console)
+    logger = logging.getLogger(__file__)
+    return logger
 
+LOG = setup_log()
 
 '''
 A simple DNS proxy server, support wilcard hosts, IPv6, cache. Usage:
@@ -128,10 +132,15 @@ class DNSProxyHandler(BaseRequestHandler):
         reqdata, sock = self.request
         req = parse_dns_message(reqdata)
         q = req.question
+        LOG.info("query = %s" %q)
         if q.type_ in (DNS_TYPE_A, DNS_TYPE_AAAA) and (q.class_ == DNS_CLASS_IN):
             for packed_ip, host in self.server.host_lines:
-                if q.name.endswith(host):
-                    LOG.info("q = %s"%q)
+                if host == "": continue
+                # support (1) wildcard matched query = ".<DOMAIN>"
+                if (host.count(".") >=1 and q.name.endswith(host)) or \
+                   (q.name.endswith(host) and q.name.startswith(host)): # (2) exact match "netflix.com"
+                #if q.name.endswith(host):
+                    LOG.info("cache query = %s; host = %s" %(q, host))
                     # header, qd=1, an=1, ns=0, ar=0
                     rspdata = reqdata[:2] + '\x81\x80\x00\x01\x00\x01\x00\x00\x00\x00'
                     rspdata += reqdata[12:q.end_offset]

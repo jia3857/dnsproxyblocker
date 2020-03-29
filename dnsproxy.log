@@ -1,2 +1,16 @@
-03-29 15:59 dnsproxy.py INFO q = {'class_': 1, 'end_offset': 38, 'name': '093qpeuqpmz6ebfa.com', 'type_': 1}
-03-29 15:59 dnsproxy.py INFO q = {'class_': 1, 'end_offset': 29, 'name': 'netflix.com', 'type_': 1}
+03-29 20:53 dnsproxy.py INFO query = {'class_': 1, 'end_offset': 29, 'name': 'netflix.com', 'type_': 1}
+03-29 20:53 dnsproxy.py INFO cache query = {'class_': 1, 'end_offset': 29, 'name': 'netflix.com', 'type_': 1}; host = netflix.com
+03-29 20:53 dnsproxy.py INFO query = {'class_': 1, 'end_offset': 33, 'name': 'www.netflix.com', 'type_': 1}
+03-29 20:53 dnsproxy.py INFO cache query = {'class_': 1, 'end_offset': 33, 'name': 'www.netflix.com', 'type_': 1}; host = .netflix.com
+03-29 20:53 dnsproxy.py INFO query = {'class_': 1, 'end_offset': 28, 'name': 'google.com', 'type_': 1}
+03-29 20:53 dnsproxy.py INFO query = {'class_': 1, 'end_offset': 32, 'name': 'www.google.com', 'type_': 1}
+03-29 20:54 dnsproxy.py INFO query = {'class_': 1, 'end_offset': 28, 'name': 'googla.com', 'type_': 1}
+03-29 20:54 dnsproxy.py INFO cache query = {'class_': 1, 'end_offset': 28, 'name': 'googla.com', 'type_': 1}; host = googla.com
+03-29 20:54 dnsproxy.py INFO query = {'class_': 1, 'end_offset': 32, 'name': 'www.googla.com', 'type_': 1}
+03-29 20:54 dnsproxy.py INFO cache query = {'class_': 1, 'end_offset': 32, 'name': 'www.googla.com', 'type_': 1}; host = googla.com
+03-29 20:54 dnsproxy.py INFO query = {'class_': 1, 'end_offset': 32, 'name': 'www.googla.com', 'type_': 1}
+03-29 20:54 dnsproxy.py INFO cache query = {'class_': 1, 'end_offset': 32, 'name': 'www.googla.com', 'type_': 1}; host = googla.com
+03-29 20:54 dnsproxy.py INFO query = {'class_': 1, 'end_offset': 32, 'name': 'www.googla.com', 'type_': 1}
+03-29 20:54 dnsproxy.py INFO cache query = {'class_': 1, 'end_offset': 32, 'name': 'www.googla.com', 'type_': 1}; host = googla.com
+03-29 20:54 dnsproxy.py INFO query = {'class_': 1, 'end_offset': 28, 'name': 'googla.com', 'type_': 1}
+03-29 20:54 dnsproxy.py INFO cache query = {'class_': 1, 'end_offset': 28, 'name': 'googla.com', 'type_': 1}; host = googla.com
